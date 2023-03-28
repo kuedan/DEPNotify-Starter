@@ -310,6 +310,41 @@ TRIGGER="event"
         fi
       }
 
+# third Text Field
+  #######################################################################################
+    # Text Field Label
+      REG_TEXT_LABEL_3="User Name"
+
+    # Place Holder Text
+      REG_TEXT_LABEL_3_PLACEHOLDER=""
+
+    # Optional flag for making the field an optional input for end user
+      REG_TEXT_LABEL_3_OPTIONAL="true" # Set variable to true or false
+
+    # Help Bubble for Input. If title left blank, this will not appear
+      REG_TEXT_LABEL_3_HELP_TITLE="Computer Name Field"
+      REG_TEXT_LABEL_3_HELP_TEXT="This field is sets the name of your new Mac to what is in the Computer Name box. This is important for inventory purposes."
+
+    # Logic below was put in this section rather than in core code as folks may
+    # want to change what the field does. This is a function that gets called
+    # when needed later on. BE VERY CAREFUL IN CHANGING THE FUNCTION!
+      REG_TEXT_LABEL_3_LOGIC (){
+        REG_TEXT_LABEL_3_VALUE=$(/usr/bin/defaults read "$DEP_NOTIFY_USER_INPUT_PLIST" "$REG_TEXT_LABEL_3")
+        if [ "$REG_TEXT_LABEL_3_OPTIONAL" = true ] && [ "$REG_TEXT_LABEL_3_VALUE" = "" ]; then
+          echo "Status: $REG_TEXT_LABEL_3 was left empty. Skipping..." >> "$DEP_NOTIFY_LOG"
+          echo "$(date "+%a %h %d %H:%M:%S"): $REG_TEXT_LABEL_3 was set to optional and was left empty. Skipping..." >> "$DEP_NOTIFY_DEBUG"
+          sleep 5
+        else
+          echo "Status: $REGISTRATION_BEGIN_WORD $REG_TEXT_LABEL_3 $REGISTRATION_MIDDLE_WORD $REG_TEXT_LABEL_3_VALUE" >> "$DEP_NOTIFY_LOG"
+          if [ "$TESTING_MODE" = true ]; then
+            sleep 10
+          else
+            "$JAMF_BINARY" recon -endUsername $REG_TEXT_LABEL_3_VALUE
+            sleep 5
+          fi
+        fi
+      }
+      
   # Popup 1
   #######################################################################################
     # Label for the popup
@@ -369,7 +404,7 @@ TRIGGER="event"
   # Popup 3 - Code is here but currently unused
   #######################################################################################
     # Label for the popup
-      REG_POPUP_LABEL_3=""
+      REG_POPUP_LABEL_3="Username"
 
     # Array of options for the user to select
       REG_POPUP_LABEL_3_OPTIONS=(
