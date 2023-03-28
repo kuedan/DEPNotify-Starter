@@ -39,7 +39,7 @@
 # Auto removal of BOM files to reduce errors
 # Sleep commands instead of policies or other changes being called
 # Quit Key set to command + control + x
-  TESTING_MODE=true # Set variable to true or false
+  TESTING_MODE=false # Set variable to true or false
 
 #########################################################################################
 # General Appearance
@@ -53,19 +53,19 @@
   BANNER_IMAGE_PATH="/Applications/Self Service.app/Contents/Resources/AppIcon.icns"
 
 # Update the variable below replacing "Organization" with the actual name of your organization. Example "ACME Corp Inc."
-  ORG_NAME="Organization"
+  ORG_NAME="Boyden-Hull CSD"
 
 # Main heading that will be displayed under the image
 # If this variable is left blank, the generic banner will appear
   BANNER_TITLE="Welcome to $ORG_NAME"
 	
 # Update the variable below replacing "email helpdesk@company.com" with the actual plaintext instructions for your organization. Example "call 555-1212" or "email helpdesk@company.com"
-  SUPPORT_CONTACT_DETAILS="email helpdesk@company.com"
+  SUPPORT_CONTACT_DETAILS="email danielk@boyden-hull.org"
   
 # Paragraph text that will display under the main heading. For a new line, use \n
 # If this variable is left blank, the generic message will appear. Leave single
 # quotes below as double quotes will break the new lines.
-  MAIN_TEXT='Thanks for choosing a Mac at '$ORG_NAME'! We want you to have a few applications and settings configured before you get started with your new Mac. This process should take 10 to 20 minutes to complete. \n \n If you need additional software or help, please visit the Self Service app in your Applications folder or on your Dock.'
+  MAIN_TEXT='Thanks for choosing a Mac at '$ORG_NAME'! We want you to have a few applications and settings configured before you get started with your new Mac. This process should take a few minutes to complete. Additional apps will install later while you are using your new mac. \n \n If you need additional software or help, please visit the Self Service app in your Applications folder or on your Dock.'
 
 # Initial Start Status text that shows as things are firing up
   INITAL_START_STATUS="Initial Configuration Starting..."
@@ -152,14 +152,11 @@ TRIGGER="event"
 # The policy array must be formatted "Progress Bar text,customTrigger". These will be
 # run in order as they appear below.
   POLICY_ARRAY=(
-    "Installing Adobe Creative Cloud,adobeCC"
-    "Installing Adobe Reader,adobeReader"
     "Installing Chrome,chrome"
+    "Installing Enable ARD,ARD"
     "Installing Firefox,firefox"
-    "Installing Zoom,zoom"
-    "Installing NoMAD,nomad"
-    "Installing Office,msOffice"
-    "Installing Webex,webex"
+    "Installing LanSchool,lanschool"
+    "Installing printer drivers,Kyocera"
     "Installing Critical Updates,updateSoftware"
   )
 
@@ -221,7 +218,7 @@ TRIGGER="event"
 # Registration Variables to Modify
 #########################################################################################
 # Registration window configuration
-  REGISTRATION_ENABLED=false # Set variable to true or false
+  REGISTRATION_ENABLED=true # Set variable to true or false
 
   # Registration window title
     REGISTRATION_TITLE="Register Mac at $ORG_NAME"
@@ -250,7 +247,7 @@ TRIGGER="event"
       REG_TEXT_LABEL_1="Computer Name"
 
     # Place Holder Text
-      REG_TEXT_LABEL_1_PLACEHOLDER="macBook0123"
+      REG_TEXT_LABEL_1_PLACEHOLDER="BH2XXXX"
 
     # Optional flag for making the field an optional input for end user
       REG_TEXT_LABEL_1_OPTIONAL="false" # Set variable to true or false
@@ -285,10 +282,10 @@ TRIGGER="event"
       REG_TEXT_LABEL_2="Asset Tag"
 
     # Place Holder Text
-      REG_TEXT_LABEL_2_PLACEHOLDER="81926392"
+      REG_TEXT_LABEL_2_PLACEHOLDER="BH2XXXX"
 
     # Optional flag for making the field an optional input for end user
-      REG_TEXT_LABEL_2_OPTIONAL="true" # Set variable to true or false
+      REG_TEXT_LABEL_2_OPTIONAL="false" # Set variable to true or false
 
     # Help Bubble for Input. If title left blank, this will not appear
       REG_TEXT_LABEL_2_HELP_TITLE="Asset Tag Field"
@@ -320,10 +317,8 @@ TRIGGER="event"
 
     # Array of options for the user to select
       REG_POPUP_LABEL_1_OPTIONS=(
-        "Amsterdam"
-        "Katowice"
-        "Eau Claire"
-        "Minneapolis"
+        "JHHS"
+        "Elementary"
       )
 
     # Help Bubble for Input. If title left blank, this will not appear
@@ -350,9 +345,8 @@ TRIGGER="event"
 
     # Array of options for the user to select
       REG_POPUP_LABEL_2_OPTIONS=(
-        "Customer Onboarding"
-        "Professional Services"
-        "Sales Engineering"
+        "Student"
+        "Staff"
       )
 
     # Help Bubble for Input. If title left blank, this will not appear
